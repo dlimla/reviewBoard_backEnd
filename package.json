@@ -5,6 +5,9 @@
   "repository": "https://github.com/dlimla/reviewBoard_backEnd.git",
   "author": "Daniel Lim <danheelim@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
