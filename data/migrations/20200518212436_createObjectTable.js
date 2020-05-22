@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     tbl.string('object_name').notNullable();
     tbl.string('object_manufac').notNullable();
     tbl.integer('object_price')
+    tbl.string('object_country_origin').notNullable()
   })
 };
 

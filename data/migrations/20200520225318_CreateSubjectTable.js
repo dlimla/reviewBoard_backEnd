@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     tbl.integer('object_id')
         .unique()
         .unsigned()
-        .reference('id')
+        .references('id')
         .inTable('object')
   })
 };
