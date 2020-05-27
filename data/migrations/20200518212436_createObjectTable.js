@@ -6,6 +6,12 @@ exports.up = function(knex, Promise) {
     tbl.string('object_manufac').notNullable();
     tbl.integer('object_price')
     tbl.string('object_country_origin').notNullable()
+    tbl
+      .string('category_type')
+      .unsigned()
+      .references('id')
+      .inTable('category')
+      .onUpdate('CASCADE')
   })
 };
 
