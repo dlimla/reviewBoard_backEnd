@@ -12,6 +12,13 @@ exports.up = function(knex, Promise) {
       .references('id')
       .inTable('category')
       .onUpdate('CASCADE')
+    tbl
+      .string('object_review')
+      .unsigned()
+      .references('id')
+      .inTable('review')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
   })
 };
 
