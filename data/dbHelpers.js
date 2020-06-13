@@ -7,7 +7,8 @@ const db = knex(dbConfig.development);
 
 module.exports = {
     getAllReviews,
-    getOneObject
+    getOneObject,
+    getOneSubject
 }
 
 async function getAllReviews() {
@@ -34,5 +35,10 @@ async function getOneObject(id) {
             'review.review as object review',
             'review_created_data as created on'
         )
+        .where({ id })
+}
+
+async function getOneSubject(id) {
+    return db('category')
         .where({ id })
 }
