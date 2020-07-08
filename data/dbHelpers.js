@@ -42,3 +42,9 @@ async function getOneSubject(id) {
     return db('category')
         .where({ id })
 }
+
+async function addReview(id, review) {
+    const object = getOneObject(id)
+    const [id] = await db('review').insert(review)
+    return getOneObject(id)
+}
