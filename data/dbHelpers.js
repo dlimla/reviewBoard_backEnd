@@ -8,7 +8,9 @@ const db = knex(dbConfig.development);
 module.exports = {
     getAllReviews,
     getOneObject,
-    getOneSubject
+    getOneSubject,
+    addReview,
+    editReview
 }
 
 async function getAllReviews() {
@@ -44,7 +46,11 @@ async function getOneSubject(id) {
 }
 
 async function addReview(id, review) {
-    const object = getOneObject(id)
+    // const object = getOneObject(id)
     const [id] = await db('review').insert(review)
     return getOneObject(id)
+}
+
+function editReview(id, changes) {
+    return db('review').where({id}).update( changes, '*')
 }
