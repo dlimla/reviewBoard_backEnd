@@ -10,10 +10,11 @@ module.exports = {
     getOneObject,
     getOneSubject,
     addReview,
-    editReview
+    editReview,
+    getAllOneSubject
 }
 
-async function getAllReviews() {
+function getAllReviews() {
     return db('object')
         .innerJoin('review', 'object_review', 'object.id')
         .select(
@@ -26,7 +27,7 @@ async function getAllReviews() {
         )
 }
 
-async function getOneObject(id) {
+function getOneObject(id) {
     return db('object')
         .innerJoin('review', 'object_review', 'object.id')
         .select(
@@ -40,7 +41,7 @@ async function getOneObject(id) {
         .where({ id })
 }
 
-async function getOneSubject(id) {
+function getOneSubject(id) {
     return db('category')
         .where({ id })
 }
@@ -53,4 +54,17 @@ async function addReview(id, review) {
 
 function editReview(id, changes) {
     return db('review').where({id}).update( changes, '*')
+}
+
+function getAllOneSubject(id) {
+    return db('category')
+        .innerJoin('object', 'category_type', 'category_id')
+        .select(
+            'object_name',
+            'object_manufac',
+            'object_price',
+            'object_country_origin',
+            'category_type'
+        )
+        .where({ id })
 }
